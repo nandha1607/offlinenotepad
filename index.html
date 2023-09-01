@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Offline Notes App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="app">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand ml-md-auto" href="#">
+        <img src="logo_3.png" alt="Logo" class="logo-img"> <!-- Replace with your logo -->
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <button id="openFileButton" class="nav-link btn btn-link">Open File</button>
+          </li>
+          <li class="nav-item">
+            <input type="file" id="fileInput" style="display: none">
+          </li>
+          <li class="nav-item">
+            <button id="downloadButton" class="nav-link btn btn-link">Download</button>
+          </li>
+          <li class="nav-item">
+            <button id="copyButton" class="nav-link btn btn-link">Copy to Clipboard</button>
+          </li>
+          <li class="nav-item">
+            <button id="pasteButton" class="nav-link btn btn-link">Paste</button>
+          </li>
+          <li class="nav-item">
+            <button id="clearButton" class="nav-link btn btn-link">Clear</button>
+          </li>
+          <li class="nav-item">
+            <button id="modeToggleButton" class="nav-link btn btn-link">Toggle Dark/Light Mode</button>
+          </li>
+          <li class="nav-item">
+            <button id="preferencesButton" class="nav-link btn btn-link">Preferences</button>
+          </li>
+          <li class="nav-item">
+            <button id="openAboutButton" class="nav-link btn btn-link">About</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <div class="content">
+      <textarea id="noteTextarea" placeholder="Start typing..."></textarea>
+      <div id="status-bar">
+        <span id="line-count">Line: 1</span>
+        <span id="column-count">Column: 1</span>
+        <span id="char-count">Chars: 0</span>
+        <span id="word-count">Words: 0</span>
+    </div>
+    </div>
+  </div>
+  <!-- Preferences overlay -->
+  <div id="preferencesOverlay" class="overlay">
+    <div class="preferences-box">
+        <div class="dialog">
+    <label for="fontSize">Font Size:</label>
+        <div class="font-size-input">
+          <input type="number" id="fontSize" value="16" min="1">
+          <span>px</span>
+        </div> 
+    <div class="dialog-content">
+                
+      <label for="fontWeight">Font Weight:</label>
+      <select id="fontWeight">
+        <option value="normal">Normal</option>
+        <option value="bold">Bold</option>
+      </select>
+      
+      <label for="lineHeight">Line Height:</label>
+      <select id="lineHeight">
+        <option value="1">1</option>
+        <option value="1.2">1.2</option>
+        <option value="1.5">1.5</option>
+      </select>
+      
+      <label for="fontFamily">Font Family:</label>
+      <select id="fontFamily">
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="Georgia, serif">Georgia</option>
+        <option value="Times New Roman, serif">Times New Roman</option>
+        <option value="Verdana, sans-serif">Verdana</option>
+        <option value="Helvetica, sans-serif">Helvetica</option>
+        <option value="Courier New, monospace">Courier New</option>
+      </select>
+      
+      <button id="savePreferences">Save</button>
+      <button id="cancelPreferences">Cancel</button>
+    </div>
+  </div>
+  </div>
+  </div>
+  <!-- About overlay -->
+  <div id="aboutOverlay" class="overlay">
+    <div class="about-container">
+      <span id="closeAboutButton" class="close-button">&times;</span>
+      <div class="about-section">
+        <h2>About</h2>
+        <p>
+          This is an offline-capable Progressive Web App.
+        </p>
+        <p>
+          The app serves the following features:
+        </p>
+        <ul>
+          <li>Write notes which are then saved to the browser's localStorage.</li>
+          <li>Installable on supported browsers for offline usage.</li>
+          <li>Dark mode.</li>
+          <li>Privacy-focused - We'll never collect your precious data.</li>
+          <li>Light-weight - Loads almost instantly.</li>
+          <li>It's open-source!</li>
+        </ul>
+        <p>
+          <strong>CAUTION:</strong> Take a backup of your notes more often since it's all stored on your browser.
+        </p>
+        <p>
+          Enjoy using this app? If so, consider a small donation so that I keep working on improving it further and the experience remains ad-free.
+          <a href="#donate">Donate</a>
+        </p>
+        <p>
+          Made with ❤️ by Nandhakumar Palanisamy
+        </p>
+        <a href="https://github.com/your-username/your-app-repo">
+          <img src="github-icon.png" alt="GitHub Source Code" class="github-icon">
+        </a>
+        <a href="#donate">
+          <img src="donate-icon.png" alt="Donate" class="donate-icon">
+        </a>
+      </div>
+    </div>
+  </div>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
