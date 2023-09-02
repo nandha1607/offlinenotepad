@@ -1,3 +1,4 @@
+https://github.com/nandha1607/offlinenotepad/blob/main/logo.png
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,50 +7,114 @@
   <link rel="stylesheet" href="styles.css">
   <title>Offline Notes App</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
   <div class="app">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand ml-md-auto" href="#">
-        <img src="https://github.com/nandha1607/offlinenotepad/blob/main/logo.png" alt="Logo" class="logo-img"> <!-- Replace with your logo -->
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <button id="openFileButton" class="nav-link btn btn-link">Open File</button>
-          </li>
-          <li class="nav-item">
-            <input type="file" id="fileInput" style="display: none">
-          </li>
-          <li class="nav-item">
-            <button id="downloadButton" class="nav-link btn btn-link">Download</button>
-          </li>
-          <li class="nav-item">
-            <button id="copyButton" class="nav-link btn btn-link">Copy to Clipboard</button>
-          </li>
-          <li class="nav-item">
-            <button id="pasteButton" class="nav-link btn btn-link">Paste</button>
-          </li>
-          <li class="nav-item">
-            <button id="clearButton" class="nav-link btn btn-link">Clear</button>
-          </li>
-          <li class="nav-item">
-            <button id="modeToggleButton" class="nav-link btn btn-link">Toggle Dark/Light Mode</button>
-          </li>
-          <li class="nav-item">
-            <button id="preferencesButton" class="nav-link btn btn-link">Preferences</button>
-          </li>
-          <li class="nav-item">
-            <button id="openAboutButton" class="nav-link btn btn-link">About</button>
-          </li>
-        </ul>
+      <div class="container">
+        <a class="navbar-brand ml-md-auto" href="#">
+          <img src="logo_3.png" alt="Logo" class="logo-img"> <!-- Replace with your logo -->
+        </a>
+          <!-- Desktop view with text and icons -->
+          <ul class="navbar-nav ml-auto d-none d-md-flex">
+            <li class="nav-item">
+              <button id="openFileButton" class="nav-link btn btn-link">
+                <i class="fas fa-folder-open"></i> Open File
+              </button>
+            </li>
+            <li class="nav-item">
+              <input type="file" id="fileInput" style="display: none">
+            </li>
+            <!-- Add more menu items with text and icons here -->
+            <li class="nav-item">
+              <button id="downloadButton" class="nav-link btn btn-link">
+                <i class="fas fa-download"></i> Download
+              </button>
+            </li>
+            <!-- Other menu items with text and icons -->
+            <li class="nav-item">
+              <button id="copyButton" class="nav-link btn btn-link">
+                <i class="fas fa-copy"></i> Copy to Clipboard
+              </button>
+            </li>
+            <!-- More menu items with text and icons -->
+            <li class="nav-item">
+              <button id="pasteButton" class="nav-link btn btn-link">
+                <i class="fas fa-paste"></i> Paste
+              </button>
+            </li>
+            <li class="nav-item">
+              <button id="clearButton" class="nav-link btn btn-link">
+                <i class="fas fa-trash"></i> Clear
+              </button>
+            </li>
+            <li class="nav-item">
+              <button id="modeToggleButton" class="nav-link btn btn-link">
+                <i id="modeIcon" class="fas fa-moon"></i> Toggle Dark/Light Mode
+              </button>
+            </li>
+            <li class="nav-item">
+              <button id="preferencesButton" class="nav-link btn btn-link">
+                <i class="fas fa-cog"></i> Preferences
+              </button>
+            </li>
+            <li class="nav-item">
+              <button id="openAboutButton" class="nav-link btn btn-link">
+                <i class="fas fa-info-circle"></i> About
+              </button>
+            </li>
+          </ul>
+    
+          <!-- Mobile view with icons only -->
+          <ul class="navbar-nav ml-auto d-md-none" style="flex-direction: row;">
+            <li class="nav-item">
+              <button id="openFileMobileButton" class="nav-link btn btn-link">
+                <i class="fas fa-folder-open"></i>
+              </button>
+            </li>
+            <!-- Add more menu items with icons only here -->
+            <li class="nav-item" style="margin-left: 10px;">
+              <button id="downloadMobileButton" class="nav-link btn btn-link">
+                <i class="fas fa-download"></i>
+              </button>
+            </li>
+            <!-- Other menu items with icons only -->
+            <li class="nav-item" style="margin-left: 10px;">
+              <button id="copyMobileButton" class="nav-link btn btn-link">
+                <i class="fas fa-copy"></i>
+              </button>
+            </li>
+            <!-- More menu items with icons only -->
+            <li class="nav-item" style="margin-left: 10px;">
+              <button id="pasteMobileButton" class="nav-link btn btn-link">
+                <i class="fas fa-paste"></i>
+              </button>
+            </li>
+            <li class="nav-item" style="margin-left: 10px;">
+              <button id="clearMobileButton" class="nav-link btn btn-link">
+                <i class="fas fa-trash"></i>
+              </button>
+            </li>
+            <li class="nav-item" style="margin-left: 10px;">
+              <button id="modeToggleMobileButton" class="nav-link btn btn-link">
+                <i id="modeIconMobile" class="fas fa-moon"></i>
+              </button>
+            </li>
+            <li class="nav-item" style="margin-left: 10px;">
+              <button id="preferencesMobileButton" class="nav-link btn btn-link">
+                <i class="fas fa-cog"></i>
+              </button>
+            </li>
+            <li class="nav-item" style="margin-left: 10px;">
+              <button id="openAboutMobileButton" class="nav-link btn btn-link">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </li>
+          </ul>
       </div>
-    </div>
-  </nav>
+    </nav>
+    
     <div class="content">
       <textarea id="noteTextarea" placeholder="Start typing..."></textarea>
       <div id="status-bar">
@@ -139,8 +204,8 @@
       </div>
     </div>
   </div>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -16,6 +16,7 @@ $(document).ready(function() {
   const preferencesButton = $('#preferencesButton');
   const fontSizeInput = $('#fontSize');
   const modeToggleButton = $('#modeToggleButton');
+  const modeIcon = $('#modeIcon');
   const fontWeightSelect = $('#fontWeight');
   const lineHeightSelect = $('#lineHeight');
   const fontFamilySelect = $('#fontFamily');
@@ -53,6 +54,9 @@ $(document).ready(function() {
   
      // Attach event listeners
   preferencesButton.on('click', togglePreferencesOverlay);
+  $('#preferencesMobileButton').on('click', function () {
+    preferencesButton.click();
+   });
   cancelPreferencesButton.on('click', hidePreferencesOverlay);
   savePreferencesButton.on('click', savePreferences);
   function togglePreferencesOverlay() {
@@ -133,6 +137,10 @@ $(document).ready(function() {
         alert('Cannot save an empty note.');
       }
     });
+    $('#downloadMobileButton').on('click', function () {
+      downloadButton.click();
+     });
+    
   
     // Clear note
     clearButton.on('click', () => {
@@ -140,7 +148,9 @@ $(document).ready(function() {
       localStorage.removeItem('note');
       updateCounts();
     });
-  
+    $('#clearMobileButton').on('click', function () {
+      clearButton.click();
+     });
     // Copy note content to clipboard
     copyButton.on('click', async () => {
       const notesContent = noteTextarea.val();
@@ -157,6 +167,9 @@ $(document).ready(function() {
         alert('Cannot copy an empty note.');
       }
     });
+    $('#copyMobileButton').on('click', function () {
+      copyButton.click();
+     });
   
     // Paste from Clipboard
     pasteButton.on('click', async function() {
@@ -168,6 +181,9 @@ $(document).ready(function() {
         console.error('Failed to paste content:', error);
       }
     });
+    $('#pasteMobileButton').on('click', function () {
+      pasteButton.click();
+     });
   
     // Undo and Redo
     undoButton.on('click', function() {
@@ -177,6 +193,9 @@ $(document).ready(function() {
         updateCounts();
       }
     });
+    $('#undoMobileButton').on('click', function () {
+      undoButton.click();
+     });
   
     redoButton.on('click', function() {
       if (historyIndex < textHistory.length - 1) {
@@ -185,11 +204,17 @@ $(document).ready(function() {
         updateCounts();
       }
     });
+    $('#redoMobileButton').on('click', function () {
+      downloadButton.click();
+     });
   
     // Open File
     openFileButton.on('click', function() {
       fileInput.click(); // Trigger the hidden file input element
     });
+    $('#openFileMobileButton').on('click', function () {
+      openFileButton.click();
+     });
   
     fileInput.on('change', function(event) {
       const selectedFile = event.target.files[0];
@@ -221,12 +246,18 @@ $(document).ready(function() {
     
         if (isDarkMode) {
           modeToggleButton.text('Toggle Dark Mode'); // Changed the text here
+          modeIcon.removeClass("fa-sun").addClass("fa-moon");
         } else {
           modeToggleButton.text('Toggle Light Mode'); // Changed the text here
+          modeIcon.removeClass("fa-moon").addClass("fa-sun");
         }
     
         // Save dark mode state to local storage
         localStorage.setItem('isDarkMode', isDarkMode);
+      });
+
+      $('#modeToggleMobileButton').on('click', function () {
+       modeToggleButton.click();
       });
     
       // Set initial dark mode state
@@ -238,7 +269,32 @@ $(document).ready(function() {
       } else {
         modeToggleButton.text('Toggle Light Mode'); // Changed the text here
       }
-    
+      
+
+  // Show About overlay when the "About" button is clicked
+  $('#openAboutButton').click(function (e) {
+    e.stopPropagation(); // Prevent the click event from propagating to the document
+    console.log("clicked");
+    $('#aboutOverlay').addClass('show');
+  });
+
+  $('#openAboutMobileButton').click(function (e) {
+    e.stopPropagation(); // Prevent the click event from propagating to the document
+    $('#openAboutButton').click();
+  });
+
+  // Close About overlay when the close button is clicked
+  $('#closeAboutButton').click(function () {
+    $('#aboutOverlay').removeClass('show');
+  });
+
+  // Close About overlay when clicking outside the container
+  $(document).click(function (e) {
+    if (!$(e.target).closest('.about-container').length && !$(e.target).is('#openAboutButton')) {
+      $('#aboutOverlay').removeClass('show');
+    }
+  });
+
       // Load initial note content from local storage
       noteTextarea.val(localStorage.getItem('note') || '');
     
@@ -246,21 +302,31 @@ $(document).ready(function() {
       updateCounts();
     });
 // Show About overlay when the "About" button is clicked
-$('#openAboutButton').click(function () {
-    $('#aboutOverlay').addClass('show');
-  });
+// $('#openAboutButton').click(function () {
+//   console.log("clicked");
+//     $('#aboutOverlay').addClass('show');
+//   });
+
+//   $('#openAboutMobileButton').click(function () {
+//     $('#aboutOverlay').addClass('show');
+//   });
+
+//   // Close About overlay when the close button is clicked
+//   $('#closeAboutButton').click(function () {
+//     $('#aboutOverlay').removeClass('show');
+//   });
+
+//   // Close About overlay when clicking outside the container
+//   // $(document).click(function (e) {
+//   //   if (!$(e.target).closest('.about-container').length && !$(e.target).is('#openAboutButton')) {
+//   //     $('#aboutOverlay').removeClass('show');
+//   //   }
+//   // });
+
+//   // $(document).click(function (e) {
+//   //   if (!$(e.target).closest('.about-container').length && !$(e.target).is('#openAboutMobileButton')) {
+//   //     $('#aboutOverlay').removeClass('show');
+//   //   }
+//   // });
+
   
-  // Close About overlay when the close button is clicked
-  $('#closeAboutButton').click(function () {
-    $('#aboutOverlay').removeClass('show');
-  });
-  
-  // Close About overlay when clicking outside the container
-  $(document).click(function (e) {
-    if (!$(e.target).closest('.about-container').length && !$(e.target).is('#openAboutButton')) {
-      $('#aboutOverlay').removeClass('show');
-    }
-  });
-  document.querySelector(".navbar-toggler").addEventListener("click", function () {
-    document.querySelector(".navbar-collapse").classList.toggle("show");
-  });

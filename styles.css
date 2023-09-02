@@ -180,47 +180,74 @@
   /* About overlay styles */
   #aboutOverlay {
     display: none;
+    z-index: 1000;
   }
+  
   #aboutOverlay.show {
     display: flex;
   }
   
-  .about-container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .about-section {
-    color: #000; /* Black text color */
-  }
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    
+    .about-container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      padding: 10px; /* Reduce padding for mobile */
+      width: 80%; /* Adjust the width as needed for mobile screens */
+      position: absolute;
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Center the element precisely */
+    }
+  
+    .about-section {
+      font-size: 16px; /* Adjust the font size for mobile */
+      color: #000; /* Black text color */
+    }
+  
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px; /* Adjust the font size for mobile */
+      cursor: pointer;
+    }
+  
+    .about-section h2 {
+      font-size: 20px; /* Adjust the font size for mobile */
+      margin-bottom: 10px;
+    }
+  
+    .about-section p {
+      margin-bottom: 10px;
+    }
+  
+    .about-section ul {
+      margin-left: 15px; /* Adjust the margin for mobile */
+      margin-bottom: 10px;
+    }
+  
+    .about-section strong {
+      font-weight: bold;
+    }
   }
   
-  .about-section h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
+  /* Desktop Styles */
+  @media (min-width: 769px) {
+    
+    .about-container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      max-width: 600px; /* Adjust the maximum width for desktop screens */
+      width: 80%; /* Optionally set a specific width for desktop */
+      margin: 0 auto; /* Center horizontally on desktop */
+    }
   }
   
-  .about-section p {
-    margin-bottom: 10px;
-  }
-  
-  .about-section ul {
-    margin-left: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .about-section strong {
-    font-weight: bold;
-  }
   
   .github-icon,
   .donate-icon {
