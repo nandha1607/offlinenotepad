@@ -10,7 +10,7 @@
         <!-- Favicon -->
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-      
+        <link rel="manifest" href="manifest.json">
         <link rel="stylesheet" href="css/styles.css">
         <title>Offline Notepad</title>
         <link rel="stylesheet" href="libs/css/bootstrap.min.css">
@@ -218,5 +218,17 @@
   <script src="libs/js/jquery-3.6.0.min.js"></script>
   <script src="libs/js/bootstrap.min.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('service-worker.js') // Path to service worker script
+        .then(function(registration) {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(function(error) {
+          console.error('Service Worker registration failed:', error);
+        });
+    }
+  </script>
 </body>
 </html>
