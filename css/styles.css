@@ -41,15 +41,20 @@ textarea {
 
 /* Status bar styles */
 #status-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #292929;
+  padding: 10px;
+  box-sizing: border-box;
+  border-top: 1px solid #444;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background-color: #292929;
-  border-top: 1px solid #444;
-  box-sizing: border-box;
-  color: white;
 }
+
 
 /* Overlay styles */
 .overlay {
@@ -385,13 +390,6 @@ body.dark-mode #status-bar {
   height: 24px;
   margin-right: 10px;
 }
-
-
-
-
-
-
-
 
 .logo-img {
   max-height: 40px; /* Adjust the max height as needed */
