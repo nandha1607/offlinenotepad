@@ -1,6 +1,6 @@
 {
     "short_name": "Notepad",
-    "name": "Offline Notepad App",
+    "name": "Notepad",
     "description": "An offline-capable notepad app",
     "start_url": "/",
     "display": "standalone",
