@@ -16,17 +16,7 @@ self.addEventListener('install', function(event) {
           'img/logo.png',
           'img/github-icon.png',
           'img/icon.png'
-          // ... Add other files to cache ...
-        ]);
-      })
-    );
-  });
-  
-  self.addEventListener('install', function(event) {
-    event.waitUntil(
-      caches.open('notes-cache').then(function(cache) {
-        return cache.addAll([
-          // ... List of resources to cache ...
+          // Add other files to cache if needed...
         ]);
       })
     );
@@ -47,7 +37,7 @@ self.addEventListener('install', function(event) {
         // No cache match, fetch the request from the network
         return fetch(event.request).then(function(response) {
           // Check if we received a valid response
-          if (!response || response.status !== 200 || response.type !== 'basic') {
+          if (!response || response.status !== 200) {
             return response;
           }
   
@@ -63,5 +53,4 @@ self.addEventListener('install', function(event) {
       })
     );
   });
-  
   
