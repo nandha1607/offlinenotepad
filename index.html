@@ -18,6 +18,10 @@
       </head>
       
 <body>
+    <div id="splash-screen">
+        <img src="img/splash.png" alt="App Logo">
+        <h1>Welcome to the Notes App</h1>
+    </div>
   <div class="app">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container">
@@ -218,6 +222,14 @@
   <script src="libs/js/jquery-3.6.0.min.js"></script>
   <script src="libs/js/bootstrap.min.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    // Hide the splash screen when the app is loaded
+    window.addEventListener('load', function () {
+        const splashScreen = document.getElementById('splash-screen');
+        splashScreen.style.display = 'none';
+    });
+</script>
+
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
