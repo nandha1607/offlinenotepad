@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand ml-md-auto" href="#">
-          <img src="logo_3.png" alt="Logo" class="logo-img"> <!-- Replace with your logo -->
+          <img src="img/logo_3.png" alt="Logo" class="logo-img"> <!-- Replace with your logo -->
         </a>
           <!-- Desktop view with text and icons -->
           <ul class="navbar-nav ml-auto d-none d-md-flex">
@@ -167,37 +167,42 @@
   <!-- About overlay -->
   <div id="aboutOverlay" class="overlay">
     <div class="about-container">
-      <span id="closeAboutButton" class="close-button">&times;</span>
-      <div class="about-section">
-        <h2>About</h2>
-        <hr class="divider">
-        <p>This is an offline-capable Progressive Web App.</p>
-        <p>The app serves the following features:</p>
-        <ul>
-          <li>Write notes which are then saved to the browser's localStorage.</li>
-          <li>Installable on supported browsers for offline usage.</li>
-          <li>Dark mode.</li>
-          <li>Privacy-focused - We'll never collect your precious data.</li>
-          <li>Light-weight - Loads almost instantly.</li>
-          <li>It's open-source!</li>
-        </ul>
-        <hr class="divider">
-        <p><strong>CAUTION:</strong> Take a backup of your notes more often since it's all stored on your browser.</p>
-        <p>
-          Enjoy using this app? If so, consider a small donation so that I keep working on improving it further and the experience remains ad-free.
-          <a href="https://paypal.me/nandha1607" target="_blank" class="donate-link">
-            <i class="fas fa-gift"></i> Donate
-          </a>
-        </p>
-        <hr class="divider">
-        <p>Made with ❤️ by Nandhakumar Palanisamy</p>
-        <a href="https://github.com/nandha1607/offlinenotepad" target="_blank">
-          <img src="github-icon.png" alt="GitHub Source Code" class="github-icon">
-        </a>
-      </div>
+        <span id="closeAboutButton" class="close-button">&times;</span>
+        <div class="about-section">
+            <h2>About This App</h2>
+            <hr class="divider">
+            <p class="welcome-text">Welcome to the Offline Notepad App!</p>
+            <p class="app-description">Our app empowers you to take notes and stay organized, even when you're offline.</p>
+            <div class="features">
+                <h3>App Features:</h3>
+                <ul>
+                    <li>Create and save notes effortlessly, which are stored securely in your browser.</li>
+                    <li>Install our app on supported browsers and access your notes offline anytime.</li>
+                    <li>Enjoy a comfortable reading experience with our Dark Mode.</li>
+                    <li>Rest easy knowing we prioritize your privacy - we never collect your data.</li>
+                    <li>Experience lightning-fast performance - our app loads almost instantly.</li>
+                    <li>We believe in open-source - you can <a href="https://github.com/nandha1607/offlinenotepad" target="_blank">contribute to our project on GitHub</a>.</li>
+                </ul>
+            </div>
+            <hr class="divider">
+            <p class="caution"><strong>Important:</strong> Remember to back up your notes regularly since they are stored locally in your browser.</p>
+            <p class="support">
+                If you love using our app and want to support its development while keeping it ad-free, please consider making a small donation.<br>
+                <a href="https://paypal.me/nandha1607" target="_blank" class="donate-link">
+                    <i class="fas fa-gift"></i> Donate
+                </a>
+            </p>
+            <hr class="divider">
+            <p>Made with ❤️ by Nandhakumar Palanisamy</p>
+            <div class="github-link">
+                <a href="https://github.com/nandha1607/offlinenotepad" target="_blank">
+                    <img src="img/github-icon.png" alt="GitHub Source Code" class="github-icon">
+                </a>
+            </div>
+            <button id="installButton" style="display: none;">Add to Home Screen</button>
+        </div>
     </div>
-  </div>
-  
+</div>
   <script src="libs/js/jquery-3.6.0.min.js"></script>
   <script src="libs/js/bootstrap.min.js"></script>
   <script src="js/script.js"></script>
