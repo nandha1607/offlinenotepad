@@ -216,16 +216,28 @@
   <script src="libs/js/bootstrap.min.js"></script>
   <script src="js/script.js"></script>
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('service-worker.js') // Path to your service worker script
-        .then(function(registration) {
-          console.log('Service Worker registered with scope:', registration.scope);
-        })
-        .catch(function(error) {
-          console.error('Service Worker registration failed:', error);
+    if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("service-worker.js") // Path to your service worker script
+    .then(function (registration) {
+      registration.addEventListener("updatefound", function () {
+        const newWorker = registration.installing;
+        newWorker.addEventListener("statechange", function () {
+          console.log("Service Worker State:", newWorker.state);
+
+          if (newWorker.state === "activated") {
+            console.log("Service Worker is now active.");
+            console.log("Service Worker Scope:", registration.scope);
+          }
         });
-    }
+      });
+
+      console.log("Service Worker registered.");
+    })
+    .catch(function (error) {
+      console.error("Service Worker registration failed:", error);
+    });
+}
   </script>
 </body>
 </html>
