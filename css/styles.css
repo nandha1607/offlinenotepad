@@ -195,7 +195,7 @@ body.dark-mode #status-bar {
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     padding: 10px; /* Reduce padding for mobile */
-    width: 80%; /* Adjust the width as needed for mobile screens */
+    width: 70%; /* Adjust the width as needed for mobile screens */
     position: absolute;
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
@@ -211,22 +211,24 @@ body.dark-mode #status-bar {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 20px; /* Adjust the font size for mobile */
+    font-size: 14px; /* Adjust the font size for mobile */
     cursor: pointer;
   }
 
   .about-section h2 {
-    font-size: 20px; /* Adjust the font size for mobile */
+    font-size: 14px; /* Adjust the font size for mobile */
     margin-bottom: 10px;
   }
 
   .about-section p {
+    font-size: 10px; /* Adjust the font size for smaller screens */
     margin-bottom: 10px;
   }
-
+  
   .about-section ul {
     margin-left: 15px; /* Adjust the margin for mobile */
     margin-bottom: 10px;
+    font-size: 10px;
   }
 
   .about-section strong {
