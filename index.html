@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
   <title>Offline Notes App</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="stylesheet" href="libs/css/bootstrap.min.css">
+  <link rel="stylesheet" href="libs/fontawesome-free-6.4.2-web/css/all.min.css">
 </head>
 <body>
   <div class="app">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand ml-md-auto" href="#">
-          <img src="https://github.com/nandha1607/offlinenotepad/blob/main/logo.png" alt="Logo" class="logo-img"> <!-- Replace with your logo -->
+          <img src="logo_3.png" alt="Logo" class="logo-img"> <!-- Replace with your logo -->
         </a>
           <!-- Desktop view with text and icons -->
           <ul class="navbar-nav ml-auto d-none d-md-flex">
@@ -170,12 +170,9 @@
       <span id="closeAboutButton" class="close-button">&times;</span>
       <div class="about-section">
         <h2>About</h2>
-        <p>
-          This is an offline-capable Progressive Web App.
-        </p>
-        <p>
-          The app serves the following features:
-        </p>
+        <hr class="divider">
+        <p>This is an offline-capable Progressive Web App.</p>
+        <p>The app serves the following features:</p>
         <ul>
           <li>Write notes which are then saved to the browser's localStorage.</li>
           <li>Installable on supported browsers for offline usage.</li>
@@ -184,27 +181,25 @@
           <li>Light-weight - Loads almost instantly.</li>
           <li>It's open-source!</li>
         </ul>
-        <p>
-          <strong>CAUTION:</strong> Take a backup of your notes more often since it's all stored on your browser.
-        </p>
+        <hr class="divider">
+        <p><strong>CAUTION:</strong> Take a backup of your notes more often since it's all stored on your browser.</p>
         <p>
           Enjoy using this app? If so, consider a small donation so that I keep working on improving it further and the experience remains ad-free.
-          <a href="#donate">Donate</a>
+          <a href="https://paypal.me/nandha1607" target="_blank" class="donate-link">
+            <i class="fas fa-gift"></i> Donate
+          </a>
         </p>
-        <p>
-          Made with ❤️ by Nandhakumar Palanisamy
-        </p>
-        <a href="https://github.com/your-username/your-app-repo">
+        <hr class="divider">
+        <p>Made with ❤️ by Nandhakumar Palanisamy</p>
+        <a href="https://github.com/nandha1607/offlinenotepad" target="_blank">
           <img src="github-icon.png" alt="GitHub Source Code" class="github-icon">
-        </a>
-        <a href="#donate">
-          <img src="donate-icon.png" alt="Donate" class="donate-icon">
         </a>
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="script.js"></script>
+  
+  <script src="libs/js/jquery-3.6.0.min.js"></script>
+  <script src="libs/js/bootstrap.min.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

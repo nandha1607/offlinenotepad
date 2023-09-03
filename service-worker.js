@@ -4,10 +4,16 @@ self.addEventListener('install', function(event) {
         return cache.addAll([
           '/',
           '/index.html',
-          '/js/app.js',
-          '/js/jquery.min.js',
-          '/css/style.css',
+          '/js/script.js',
+          '/css/styles.css',
           '/manifest.json',
+          '/libs/js/bootstrap.min.js', 
+          '/libs/js/jquery-3.6.0.min.js',
+          '/libs/css/bootstrap.min.css',
+          '/libs/fontawesome-free-6.4.2-web/css/all.min.css',
+          '/libs/fontawesome-free-6.4.2-web/webfonts/fa-solid-900.woff2',
+          '/libs/fontawesome-free-6.4.2-web/LICENSE.txt',
+          
           // ... Add other files to cache ...
         ]);
       })
