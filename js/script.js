@@ -301,35 +301,3 @@ $(document).click(function (e) {
     // Update counts initially
     updateCounts();
   });
-// Check if the browser supports service workers and the beforeinstallprompt event.
-if ('serviceWorker' in navigator && 'BeforeInstallPromptEvent' in window) {
-// Listen for the beforeinstallprompt event.
-window.addEventListener('beforeinstallprompt', (event) => {
-  event.preventDefault(); // Prevent the default browser prompt.
-
-  // Show the "Add to Home Screen" button.
-  document.getElementById('installButton').style.display = 'block';
-
-  // Store the event for later use.
-  const installPromptEvent = event;
-
-  // Handle the button click.
-  document.getElementById('installButton').addEventListener('click', () => {
-    // Show the browser's installation prompt.
-    installPromptEvent.prompt();
-
-    // Wait for the user to respond to the prompt.
-    installPromptEvent.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the installation prompt.');
-      } else {
-        console.log('User dismissed the installation prompt.');
-      }
-
-      // Reset the button display.
-      document.getElementById('installButton').style.display = 'none';
-    });
-  });
-});
-}
-
