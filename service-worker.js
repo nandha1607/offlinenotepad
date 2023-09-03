@@ -73,3 +73,12 @@ self.addEventListener('fetch', function(event) {
     })
   );
 });
+
+// This part of the code fetches resources from the network when available
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    fetch(event.request).catch(function() {
+      return caches.match(event.request);
+    })
+  );
+});
