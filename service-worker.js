@@ -50,6 +50,12 @@ self.addEventListener('activate', function(event) {
 
 // Service Worker Fetch (Network Request Handling)
 self.addEventListener('fetch', function(event) {
+    // Modify the request URL here to forward to /offlinenotepad/
+    let requestUrl = event.request.clone();
+    if (requestUrl.url.startsWith('https://nandha1607.github.io/')) {
+      requestUrl = new URL(requestUrl.url.replace('https://nandha1607.github.io/', 'https://nandha1607.github.io/offlinenotepad/'));
+    }
+  
     event.respondWith(
       caches.match(event.request).then(function(cachedResponse) {
         let online = navigator.onLine;
@@ -64,12 +70,6 @@ self.addEventListener('fetch', function(event) {
             // Respond with a custom offline page or an error page
             return new Response('You are offline.');
           }
-        }
-  
-        // Modify the request URL here to forward to /offlinenotepad/
-        let requestUrl = event.request.clone();
-        if (requestUrl.url.startsWith('https://nandha1607.github.io')) {
-          requestUrl = new URL(requestUrl.url.replace('https://nandha1607.github.io', 'https://nandha1607.github.io/offlinenotepad'));
         }
   
         // Network is online, fetch from the network
