@@ -221,7 +221,7 @@ if ('serviceWorker' in navigator) {
       registration.unregister();
     }
 
-    navigator.serviceWorker.register('service-worker.js')
+    navigator.serviceWorker.register('/offlinenotepad/service-worker.js', { scope: '/offlinenotepad/' })
       .then(function(registration) {
         registration.addEventListener('updatefound', function() {
           const newWorker = registration.installing;
