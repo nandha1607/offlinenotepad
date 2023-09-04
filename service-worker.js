@@ -52,8 +52,12 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
     // Modify the request URL here to forward to /offlinenotepad/
     let requestUrl = event.request.clone();
-    if (requestUrl.url.startsWith('https://nandha1607.github.io/')) {
-      requestUrl = new URL(requestUrl.url.replace('https://nandha1607.github.io/', 'https://nandha1607.github.io/offlinenotepad/'));
+    if (requestUrl.url.startsWith('https://nandha1607.github.io')) {
+      // Get the path part of the request URL
+      const path = requestUrl.url.replace('https://nandha1607.github.io', '');
+  
+      // Append the path to the new URL
+      requestUrl = new URL('https://nandha1607.github.io/offlinenotepad' + path);
     }
   
     event.respondWith(
