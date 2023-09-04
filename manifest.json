@@ -2,7 +2,7 @@
     "short_name": "Notepad",
     "name": "Notepad",
     "description": "An offline-capable notepad app",
-    "start_url": "https://nandha1607.github.io/offlinenotepad/",
+    "start_url": "index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#333333",
