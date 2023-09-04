@@ -2,7 +2,7 @@
     "short_name": "Notepad",
     "name": "Notepad",
     "description": "An offline-capable notepad app",
-    "start_url": "index.html",
+    "start_url": "https://nandha1607.github.io/offlinenotepad/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#333333",
@@ -19,7 +19,7 @@
       },
       {
         "src": "img/apple-touch-icon.png",
-        "sizes": "128x128",
+        "sizes": "180x180",
         "type": "image/png"
       },
       {
@@ -34,7 +34,7 @@
       },
       {
         "src": "img/favicon.ico",
-        "sizes": "192x192",
+        "sizes": "48x48",
         "type": "image/x-icon"
       }
     ],
