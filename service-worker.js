@@ -1,5 +1,5 @@
 // Define a cache name for your application
-const CACHE_NAME = 'offline-notepad-cache-v1';
+const CACHE_NAME = 'offline-notepad-cache-v2'; // Change the cache version
 
 // Files to cache
 const cachedFiles = [
@@ -22,45 +22,71 @@ const cachedFiles = [
 
 // Service Worker Installation
 self.addEventListener('install', function(event) {
-    event.waitUntil(
-      caches.open(CACHE_NAME).then(function(cache) {
-        return cache.addAll(cachedFiles).catch(function(error) {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(function(cache) {
+      return cache.addAll(cachedFiles)
+        .catch(function(error) {
           console.error('Failed to cache one or more resources:', error);
         });
-      })
-    );
-  });
-  
-  self.addEventListener('activate', function(event) {
-    event.waitUntil(
-      caches.keys().then(function(cacheNames) {
-        return Promise.all(
-          cacheNames.map(function(cacheName) {
-            if (cacheName !== CACHE_NAME) {
-              return caches.delete(cacheName);
-            }
-          })
-        );
-      })
-    );
-  });
-  
-  self.addEventListener('fetch', function(event) {
-    event.respondWith(
-      caches.match(event.request).then(function(cachedResponse) {
+    })
+  );
+});
+
+// Service Worker Activation (Cleanup or Version Management)
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          // Delete outdated caches (if any)
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+
+// Service Worker Fetch (Network Request Handling)
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request).then(function(cachedResponse) {
+      let online = navigator.onLine;
+
+      // Check network connectivity
+      if (!online) {
         if (cachedResponse) {
+          // Cache hit, return the cached response
           return cachedResponse;
+        } else {
+          // Network is offline, and no cached response available
+          // Respond with a custom offline page or an error page
+          return new Response('You are offline.');
         }
-        return fetch(event.request).then(function(response) {
+      }
+
+      // Network is online, fetch from the network
+      return fetch(event.request)
+        .then(function(response) {
+          // Check if we received a valid response
           if (!response || response.status !== 200) {
             return response;
           }
+
+          // Clone the response to store it in the cache
           var responseToCache = response.clone();
+
           caches.open(CACHE_NAME).then(function(cache) {
             cache.put(event.request, responseToCache);
           });
+
           return response;
+        })
+        .catch(function(error) {
+          // Network request failed, respond with a custom error page
+          return new Response('Network request failed.');
         });
-      })
-    );
-  });
+    })
+  );
+});
