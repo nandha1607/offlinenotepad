@@ -50,43 +50,50 @@ self.addEventListener('activate', function(event) {
 
 // Service Worker Fetch (Network Request Handling)
 self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request).then(function(cachedResponse) {
-      let online = navigator.onLine;
-
-      // Check network connectivity
-      if (!online) {
-        if (cachedResponse) {
-          // Cache hit, return the cached response
-          return cachedResponse;
-        } else {
-          // Network is offline, and no cached response available
-          // Respond with a custom offline page or an error page
-          return new Response('You are offline.');
-        }
-      }
-
-      // Network is online, fetch from the network
-      return fetch(event.request)
-        .then(function(response) {
-          // Check if we received a valid response
-          if (!response || response.status !== 200) {
-            return response;
+    event.respondWith(
+      caches.match(event.request).then(function(cachedResponse) {
+        let online = navigator.onLine;
+  
+        // Check network connectivity
+        if (!online) {
+          if (cachedResponse) {
+            // Cache hit, return the cached response
+            return cachedResponse;
+          } else {
+            // Network is offline, and no cached response available
+            // Respond with a custom offline page or an error page
+            return new Response('You are offline.');
           }
-
-          // Clone the response to store it in the cache
-          var responseToCache = response.clone();
-
-          caches.open(CACHE_NAME).then(function(cache) {
-            cache.put(event.request, responseToCache);
+        }
+  
+        // Modify the request URL here to forward to /offlinenotepad/
+        let requestUrl = event.request.clone();
+        if (requestUrl.url.startsWith('https://nandha1607.github.io')) {
+          requestUrl = new URL(requestUrl.url.replace('https://nandha1607.github.io', 'https://nandha1607.github.io/offlinenotepad'));
+        }
+  
+        // Network is online, fetch from the network
+        return fetch(requestUrl)
+          .then(function(response) {
+            // Check if we received a valid response
+            if (!response || response.status !== 200) {
+              return response;
+            }
+  
+            // Clone the response to store it in the cache
+            var responseToCache = response.clone();
+  
+            caches.open(CACHE_NAME).then(function(cache) {
+              cache.put(event.request, responseToCache);
+            });
+  
+            return response;
+          })
+          .catch(function(error) {
+            // Network request failed, respond with a custom error page
+            return new Response('Network request failed.');
           });
-
-          return response;
-        })
-        .catch(function(error) {
-          // Network request failed, respond with a custom error page
-          return new Response('Network request failed.');
-        });
-    })
-  );
-});
+      })
+    );
+  });
+  
